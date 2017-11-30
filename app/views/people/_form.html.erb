@@ -1,0 +1,38 @@
+
+<%= form_with(model: person, local: true, builder: BsFormBuilder) do |form| %>
+  
+  
+  <div class="row">
+  <div class="col-sm">
+  
+    <% if person.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+  
+        <ul>
+        <% person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <form>
+  
+  <!-- Campos de formulario-->
+  
+  
+      <%= form.text_field :name, id: :person_name, label: "Su Nombre:"%>
+      <%= form.text_field :lastname, id: :person_lastname, label: "Su Apellido:"%>
+      <%= form.text_field :address, id: :person_address, label: "Dirección:", small: "Introduzca su dirección completa, con CP incluido"%>
+      <%= form.number_field :age, id: :person_age%>
+      <%= form.submit "Enviar" %>
+  
+    </form>
+  
+      </div>
+      <div class="col-sm">
+      <p>Aquí pasamos instrucciones sobre el formulario</p>
+  </div>
+  </div>
+  <% end %>

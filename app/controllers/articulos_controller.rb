@@ -18,9 +18,16 @@ class ArticulosController < ApplicationController
   end
 
   def edit
+    @articulo=Articulo.find(params[:id])
   end
 
   def update
+    @articulo=Articulo.find(params[:id])
+    if @articulo.update(articulo_params)
+      redirect_to @articulo
+    else
+      render 'edit'
+    end
   end
 
   def show
